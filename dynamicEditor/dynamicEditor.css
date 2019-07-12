@@ -1,0 +1,51 @@
+.dynamicEditor {
+    background: white;
+    border-radius: 20px;
+    z-index: 5;
+    transition: 1.3s;
+    position: absolute;
+    padding: 30px;
+    -webkit-box-shadow: 0px 10px 24px -10px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 10px 24px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 10px 24px -10px rgba(0, 0, 0, 0.75);
+}
+
+#dynamicEditor-save {
+    display: none;
+    color: transparent;
+    background: transparent;
+}
+
+.dynamicEditor-editable {
+    padding: 10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    display: block;
+    user-select: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    border-radius: 5px;
+    height: auto;
+}
+
+.dynamicEditor-editable:hover {
+    transition: 0.3s;
+    background: #46ff7e71;
+    color: black;
+    cursor: pointer;
+}
+
+.dynamicEditor-editable>div {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.dynamicEditor-active {
+    background: #46ff7e71;
+    color: black;
+    cursor: pointer;
+}
