@@ -27,12 +27,15 @@
     -moz-user-select: none;
     -ms-user-select: none;
     border-radius: 5px;
+    border: 1.6px solid black;
+    border-style: dashed;
     height: auto;
 }
 
 .dynamicEditor-editable:hover {
     transition: 0.3s;
-    background: #46ff7e71;
+    background-color: rgba(33, 212, 253, 0.1);
+    background-image: linear-gradient(19deg, rgba(33, 212, 253, 0.1) 0%, rgba(183, 33, 255, 0.1) 100%);
     color: black;
     cursor: pointer;
 }
@@ -45,7 +48,8 @@
 }
 
 .dynamicEditor-active {
-    background: #46ff7e71;
+    background-color: rgba(33, 212, 253, 0.1);
+    background-image: linear-gradient(19deg, rgba(33, 212, 253, 0.1) 0%, rgba(183, 33, 255, 0.1) 100%);
     color: black;
     cursor: pointer;
 }
