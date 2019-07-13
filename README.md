@@ -57,6 +57,6 @@ saveButton.addEventListener('click', () => {
 # Preview
 See a live preview [here](https://margato.github.io/dynamicEditor).
 
-# Contribue
+# Contribute
 This is not the README final version.
 
