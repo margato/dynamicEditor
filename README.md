@@ -37,16 +37,16 @@ new DynamicEditor(text);
 saveButton.addEventListener('click', () => {
 	
   	//DynamicEditor POST Request method
- 	postEditorsData('http://localhost/api/controllerRoute')
-		.then(res => {
-        	alert("Success! See more details in the console");
+    postEditorsData('http://localhost/api/controllerRoute')
+        .then(res => {
+            alert("Success! See more details in the console");
             console.log({
-            	message: "Default message.",
+                message: "Default message.",
                 response: res
             });
         })
         .catch(err => {
-        	alert("Oops!\n" + err);
+            alert("Oops!\n" + err);
             console.error(err);
         });
 });
