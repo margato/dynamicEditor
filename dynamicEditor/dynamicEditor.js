@@ -1,7 +1,7 @@
 let editors = [];
 let createdEditors = [];
 
-function DynamicEditor(element, mobileRedirect = "#", config) {
+function DynamicEditor(element, config) {
     if (!tinymce) {
         throw "DynamicEditor is dependent on TinyMCE.";
     }
@@ -100,25 +100,21 @@ function DynamicEditor(element, mobileRedirect = "#", config) {
     }
 
     this.toggleEditor = () => {
-        if (this.isDesktop()) {
-            return new Promise((resolve, reject) => {
-                if (this.hasActiveEditors()) {
-                    this.closeAll();
-                    if (editors[0] == this.editor) {
-                        if (this.element.textContent == "") this.element.textContent = this.config.defaultText;
-                        reject("Editor removed from scene");
-                    } else {
-                        this.initEdition();
-                        resolve("Editor added to scene");
-                    }
+        return new Promise((resolve, reject) => {
+            if (this.hasActiveEditors()) {
+                this.closeAll();
+                if (editors[0] == this.editor) {
+                    if (this.element.textContent == "") this.element.textContent = this.config.defaultText;
+                    reject("Editor removed from scene");
                 } else {
                     this.initEdition();
                     resolve("Editor added to scene");
                 }
-            });
-        } else {
-            window.location = mobileRedirect;
-        }
+            } else {
+                this.initEdition();
+                resolve("Editor added to scene");
+            }
+        });
     }
 
     this.checkChanges = () => {
@@ -147,6 +143,11 @@ function DynamicEditor(element, mobileRedirect = "#", config) {
                             this.checkChanges();
                         });
 
+                    },
+                    mobile: {
+                        theme: 'mobile',
+                        plugins: ['autosave', 'lists', 'autolink'],
+                        toolbar: this.config.tinyMCE_toolbar,
                     }
                 });
                 this.editor.style.display = "block";
