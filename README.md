@@ -36,7 +36,7 @@ new DynamicEditor(text);
 //Save changes on click
 saveButton.addEventListener('click', () => {
 	
-  	//DynamicEditor POST Request method
+    //DynamicEditor POST Request method
     postEditorsData('http://localhost/api/controllerRoute')
         .then(res => {
             alert("Success! See more details in the console");
