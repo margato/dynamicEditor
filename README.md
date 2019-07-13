@@ -1,1 +1,1 @@
-"# dynamicEditor" 
+# dynamicEditor 
