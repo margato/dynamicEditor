@@ -1,7 +1,7 @@
 let editors = [];
 let createdEditors = [];
 
-function DynamicEditor(element, mobileRedirect = "#", config) {
+function DynamicEditor(element, config) {
     if (!tinymce) {
         throw "DynamicEditor is dependent on TinyMCE.";
     }
