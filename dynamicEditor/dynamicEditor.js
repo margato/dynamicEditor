@@ -126,6 +126,7 @@ function DynamicEditor(element, config) {
     this.element.addEventListener('click', () => {
         this.toggleEditor()
             .then(() => {
+                this.checkChanges();
                 tinymce.init({
                     selector: "#" + this.id,
                     force_p_newlines: false,
@@ -136,11 +137,9 @@ function DynamicEditor(element, config) {
                     init_instance_callback: editor => {
                         editor.on('Change', event => {
                             this.element.innerHTML = event.level.content;
-                            this.checkChanges();
                         });
                         editor.on('keyup', event => {
                             this.element.innerHTML = event.target.innerHTML;
-                            this.checkChanges();
                         });
 
                     },
