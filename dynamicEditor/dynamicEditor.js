@@ -126,6 +126,7 @@ function DynamicEditor(element, config) {
     this.element.addEventListener('click', () => {
         this.toggleEditor()
             .then(() => {
+                this.checkChanges();
                 tinymce.init({
                     selector: "#" + this.id,
                     force_p_newlines: false,
@@ -136,13 +137,10 @@ function DynamicEditor(element, config) {
                     init_instance_callback: editor => {
                         editor.on('Change', event => {
                             this.element.innerHTML = event.level.content;
-                            this.checkChanges();
                         });
                         editor.on('keyup', event => {
                             this.element.innerHTML = event.target.innerHTML;
-                            this.checkChanges();
                         });
-
                     },
                     mobile: {
                         theme: 'mobile',
@@ -159,14 +157,15 @@ function DynamicEditor(element, config) {
 }
 
 function postEditorsData(route) {
-    const forms = [];
     const edited = document.querySelector("#dynamicEditor-save");
+    console.log(createdEditors);
     return new Promise((resolve, reject) => {
         if (edited.style.display !== "block") {
             return reject("dinamycEditor: Nothing to be saved.");
         }
         let form = new FormData();
-        forms.forEach(textArea => {
+        createdEditors.forEach(editor => {
+            const textArea = editor.querySelector("textarea");
             const content = document.querySelector("#" + textArea.id.replace("-dynamicEditor", "")).innerHTML;
             form.append(textArea.name, content);
         });
