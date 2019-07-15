@@ -159,14 +159,14 @@ function DynamicEditor(element, config) {
 }
 
 function postEditorsData(route) {
-    const forms = [];
     const edited = document.querySelector("#dynamicEditor-save");
     return new Promise((resolve, reject) => {
         if (edited.style.display !== "block") {
             return reject("dinamycEditor: Nothing to be saved.");
         }
         let form = new FormData();
-        forms.forEach(textArea => {
+        createdEditors.forEach(editor => {
+            const textArea = editor.querySelector("textarea");
             const content = document.querySelector("#" + textArea.id.replace("-dynamicEditor", "")).innerHTML;
             form.append(textArea.name, content);
         });
